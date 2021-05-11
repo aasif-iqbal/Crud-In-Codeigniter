@@ -53,5 +53,10 @@ $route['default_controller'] = 'Crud';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['create'] = 'Crud/addEmployees';
-// $route['show-all'] = 'Crud/showForm';
+$route['show'] = 'Crud/show_emp_details';
+
+$route['create'] = 'Crud/create';
+$route['store'] = 'Crud/store';
+$route['edit/(:any)'] = 'Crud/edit/$1';
+$route['update/(:any)'] = 'Crud/update/$1';
+$route['delete/(:any)'] = 'Crud/delete/$1';

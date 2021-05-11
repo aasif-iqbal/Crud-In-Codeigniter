@@ -5,46 +5,48 @@ class Crud extends CI_Controller{
 
     public function __construct(){
 		parent::__construct();
-		
-		$this->load->helper('url');
-		
+						
 		/*load database libray manually*/
 		$this->load->database();
 		
 		/*load Model*/
-		$this->load->model('Employee_model');		
-	 }
+		$this->load->model('Employee_model');			
+	}
 
 	 public function index(){
-		 $this->load->view('includes/nav');
-		 $this->load->view('crud/add');		 
+		$data = $this->Employee_model->get_emp_details();
+
+		$this->load->view('includes/nav');		 
+		$this->load->view('crud/show_all', array('employees' => $data));
 	 }
 
-	 public function show_all_employees(){
-		$this->load->view('crud/show_all');
-	 }
-
-     //Create - Save
-	public function addEmployees(){
-	
-		    $data['name'] = $this->input->post('name');
-			$data['contact_no'] = $this->input->post('contact_no');
-			$data['address'] = $this->input->post('address');
-			$data['designation'] = $this->input->post('designation');
-			$data['age'] = $this->input->post('age');
-			
-			$response = $this->Employee_model->saveRecords($data);
-			
-			// if($response == true){
-			//         echo "Records Saved Successfully";
-			// }
-			// else{
-			// 		echo "Insert error !";
-			// }
+		public function create(){
+			$this->load->view('includes/nav');			    			
+			$this->load->view('crud/create');
 		}	
 
-		public function showForm(){
-			return $this->load->view('welcome_message');
+		public function store(){
+			$this->load->view('includes/nav');
+			$this->Employee_model->saveRecords();									
+		}
+
+		public function edit($id){
+			$this->load->view('includes/nav');								
+			$data = $this->Employee_model->edit_emp_details($id);					
+			$this->load->view('crud/edit', array('data'=>$data));
+		}
+		
+		public function update($id){
+			$this->load->view('includes/nav');						
+			$this->Employee_model->update_emp_details($id);
+			// $this->session->set_flashdata('update_emp', 'Record has been updated');
+			// redirect(base_url('/'));
+		}
+
+		public function delete($id){
+			$this->Employee_model->deleteRecords($id);
+			$this->session->set_flashdata('delete_emp', 'Record has been deleted');
+			redirect(base_url('/'));
 		}
 	
 
