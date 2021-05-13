@@ -37,7 +37,7 @@
       <option value="Cloud_architect">Cloud Architect</option>
       <option value="SQL_developer">SQL Developer</option>
       <option value="Web_designer">Web Designer</option>
-	  <option value="Web_developer">Web Developer</option>
+	    <option value="Web_developer">Web Developer</option>
     </select>
     <?php  if(form_error('designation')){ echo "<span style='color:red'>".form_error('designation')."</span>";} ?>
   </div>

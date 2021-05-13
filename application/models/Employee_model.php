@@ -14,9 +14,9 @@ class Employee_model extends CI_Model{
         
         $this->form_validation->set_rules('name', 'Name','required|max_length[15]|min_length[3]|trim');
         $this->form_validation->set_rules('contact_no','Contact Number','required|min_length[10]|trim');
-        $this->form_validation->set_rules('address', 'Address', 'required|min_length[10]|max_length[15]|trim');
+        $this->form_validation->set_rules('address','Address', 'required|min_length[10]|max_length[50]|trim');
         $this->form_validation->set_rules('designation', 'Designation','required');
-        $this->form_validation->set_rules('age', 'Age','required|max_length[2]|min_length[1]|trim');
+        $this->form_validation->set_rules('age','Age','required|max_length[2]|min_length[1]|trim');
       
         if ($this->form_validation->run() == FALSE) 
         {
@@ -46,7 +46,7 @@ class Employee_model extends CI_Model{
         
         $this->form_validation->set_rules('name', 'Name','required|max_length[15]|min_length[3]|trim');
         $this->form_validation->set_rules('contact_no','Contact Number','required|min_length[10]|trim');
-        $this->form_validation->set_rules('address', 'Address', 'required|min_length[10]|max_length[15]|trim');
+        $this->form_validation->set_rules('address', 'Address', 'required|min_length[10]|max_length[50]|trim');
         $this->form_validation->set_rules('designation', 'Designation','required');
         $this->form_validation->set_rules('age', 'Age','required|max_length[2]|min_length[1]|trim');
 
