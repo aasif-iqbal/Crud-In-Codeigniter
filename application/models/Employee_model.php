@@ -77,6 +77,8 @@ class Employee_model extends CI_Model{
     }
 
     public function deleteRecords($id){
-        return $this->db->delete('emp_tbl', array('emp_id' => $id));
+        $this->db->delete('emp_tbl', array('emp_id' => $id));
+        $this->session->set_flashdata('delete_emp', 'Record has been deleted');
+        redirect(base_url('/'));
     }   
 }
